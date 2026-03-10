@@ -50,3 +50,12 @@ x86/
 *.exe
 *.pdb
 *.ilk
+
+# Ignorera CMake's byggmapp
+build/
+
+# Ignorera Mac-specifika skräpfiler
+.DS_Store
+
+# Ignorera VS Code-inställningar
+.vscode/

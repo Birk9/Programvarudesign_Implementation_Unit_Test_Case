@@ -1,12 +1,14 @@
 #pragma once
 #include <string>
+#include <vector>
+#include "GameElement.h"
 
-class Scene
+class Scene : public GameElement
 {
 public:
 	Scene();
 	~Scene();
-	listAvailableElements();
+	std::vector<std::string> listAvailableElements();
 	bool isAvailable(std::string gameElementName);
 	bool isGameObject(std::string gameElementName);
 

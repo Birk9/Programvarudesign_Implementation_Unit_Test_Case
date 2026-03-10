@@ -4,8 +4,7 @@ class GameElement
 {
 public:
 	GameElement();
-	~GameElement();
-
+	virtual ~GameElement();
 
 private:
 

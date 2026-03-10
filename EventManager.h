@@ -1,16 +1,25 @@
 #pragma once
+#include <string>
 
-class EventManager
-{
+// Nu är de två helt unika typer i systemet!
+struct EventCondition {
+    std::string value;
+};
+
+struct Event {
+    std::string value;
+};
+
+class EventManager {
 public:
-	EventManager();
-	~EventManager();
-	createEvent(EventCondition, Event);
-	listAffectedEvents(EventCondition);
-	triggerEvents(EventCondition);
-	clearEvent(EventCondition);
-	clearEvent(Event);
+    EventManager();
+    ~EventManager();
+    
+    void createEvent(EventCondition condition, Event event);
+    void listAffectedEvents(EventCondition condition);
+    void triggerEvents(EventCondition condition);
+    void clearEvent(EventCondition condition);
+    void clearEvent(Event event); 
 
 private:
-
 };
