@@ -9,9 +9,12 @@ class Game
 public:
 	Game();
 	~Game();
-	void selectGameObject(std::string name);
-	void selectInteraction(GameObject* theGameObject, std::string theInteraction);
-	void setInteractionOptions(std::string theOptions);
+    
+    // Ändrat från void till bool!
+	bool selectGameObject(std::string name);
+	bool selectInteraction(GameObject* theGameObject, std::string theInteraction);
+	bool setInteractionOptions(std::string theOptions);
+    
 	void startInteraction();
 	void abortInteraction();
 

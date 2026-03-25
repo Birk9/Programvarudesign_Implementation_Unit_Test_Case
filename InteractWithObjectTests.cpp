@@ -1,42 +1,56 @@
-#include <gtest/gtest.h>
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest.h"
 #include "Game.h"
 #include "GameObject.h"
 #include "Scene.h"
 
-class InteractWithObjectTest : public ::testing::Test {
-protected:
-    Game* myGame;
-    GameObject* testObject;
-    Scene* testScene;
+// ---------------------------------------------------------
+// TESTER FÖR: Interact With Object
+// ---------------------------------------------------------
 
-    void SetUp() override {
-        myGame = new Game();
-        testObject = new GameObject();
-        testScene = new Scene();
-    }
-
-    void TearDown() override {
-        delete myGame;
-        delete testObject;
-        delete testScene;
-    }
-};
-
-TEST_F(InteractWithObjectTest, SelectValidObject_PositivePath) {
-    EXPECT_NO_THROW(myGame->selectGameObject("Flashlight"));
+TEST_CASE("SelectGameObject - Positive - ObjectExists") {
+    // Arrange
+    Game game;
+    // (I en riktig implementation skulle Game hämta "TestLamp" 
+    // från GameObjectRepository här)
+    
+    // Act
+    // Anta att vi har ändrat selectGameObject till att returnera bool!
+    bool success = game.selectGameObject("TestLamp"); 
+    
+    // Assert
+    CHECK(success == true); 
 }
 
-TEST_F(InteractWithObjectTest, StartInteraction_PositivePath) {
-    myGame->selectGameObject("Flashlight");
-    myGame->selectInteraction(testObject, "turn on");
-    EXPECT_NO_THROW(myGame->startInteraction());
+TEST_CASE("SelectGameObject - Negative - ObjectMissing") {
+    Game game;
+    
+    // Act: Försöker välja ett objekt som inte finns
+    bool success = game.selectGameObject("NonExistentSword"); 
+    
+    // Assert
+    CHECK(success == false);
 }
 
-TEST_F(InteractWithObjectTest, SelectInvalidObject_NegativePath) {
-    bool exists = testScene->isGameObject("Ghost");
-    EXPECT_FALSE(exists);
+TEST_CASE("SelectInteraction - Positive - ValidInteraction") {
+    Game game;
+    GameObject lamp;
+    // lamp.addInteraction("TurnOn"); // Pseudokod för hur ni lägger till den
+    
+    // Act
+    bool success = game.selectInteraction(&lamp, "TurnOn");
+    
+    // Assert
+    CHECK(success == true);
 }
 
-TEST_F(InteractWithObjectTest, InteractWithNullptr_NegativePath) {
-    EXPECT_NO_THROW(myGame->selectInteraction(nullptr, "turn on"));
+TEST_CASE("SelectInteraction - Negative - InvalidInteraction") {
+    Game game;
+    GameObject lamp;
+    
+    // Act: Försöker göra något man inte kan göra med en lampa
+    bool success = game.selectInteraction(&lamp, "Eat");
+    
+    // Assert
+    CHECK(success == false);
 }

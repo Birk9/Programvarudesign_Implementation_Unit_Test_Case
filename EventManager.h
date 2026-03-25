@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-// Nu är de två helt unika typer i systemet!
+
 struct EventCondition {
     std::string value;
 };
