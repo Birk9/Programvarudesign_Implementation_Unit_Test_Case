@@ -9,7 +9,7 @@ std::vector<std::string> Scene::listAvailableElements() {
 }
 
 bool Scene::isAvailable(std::string gameElementName) {
-    return false;
+    return true; 
 }
 
 bool Scene::isGameObject(std::string gameElementName) {

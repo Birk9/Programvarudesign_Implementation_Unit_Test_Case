@@ -12,6 +12,8 @@ add_library(GameEngineLib
     GameObject.cpp
     GameObjectRepository.cpp
     Scene.cpp
+    Character.cpp
+    CharacterRepository.cpp
 )
 
 
