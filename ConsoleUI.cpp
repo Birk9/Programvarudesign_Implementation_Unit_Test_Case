@@ -5,26 +5,29 @@
 ConsoleUI::ConsoleUI(Game* gameInstance) : game(gameInstance) {}
 
 void ConsoleUI::run() {
-    int choice = 0;
+    std::string choice = "";
     std::cout << "\n=== WELCOME TO THE GAME ===\n";
     // Fulfills the MVP requirement for a Start Scene
     std::cout << "[System] You are in the Start Scene.\n";
 
-    while (choice != 3) {
+    while (choice != "3") { 
         displayMenu();
         std::cin >> choice;
 
-        if (choice == 1) {
+        if (choice == "1") {
             interactWithEntity();
-        } else if (choice == 2) {
-            // Fulfills the MVP requirement for an Inventory
+        } else if (choice == "2") {
             std::cout << "\n--- INVENTORY ---\n";
             std::cout << "Your inventory is currently empty.\n";
             std::cout << "-----------------\n";
+        } else if (choice != "3") {
+            // Liten bonus: Säger till om spelaren skriver något konstigt!
+            std::cout << "Invalid choice, try again!\n";
         }
     }
     std::cout << "Exiting game...\n";
 }
+
 
 void ConsoleUI::displayMenu() {
     std::cout << "\n=== MAIN MENU ===\n";
