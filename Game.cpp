@@ -4,8 +4,8 @@
 Game::Game() {
     // Fyll arkivet så spelet och testerna fungerar!
     myGameObjects.addGameObject("TestLamp", new GameObject()); 
-    myGameObjects.addGameObject("Lampa", new GameObject());    
-    myGameObjects.addGameObject("Vakt", new GameObject());     
+    myGameObjects.addGameObject("Lamp", new GameObject());     // Ändrat från Lampa
+    myGameObjects.addGameObject("Guard", new GameObject());     
 }
 
 Game::~Game() {}
@@ -32,9 +32,9 @@ bool Game::setInteractionOptions(std::string theOptions) {
 }
 
 void Game::startInteraction() {
-    std::cout << "[System] Interaktionen utfördes!\n";
+    std::cout << "[System] Interaction complete!\n";
 }
 
 void Game::abortInteraction() {
-    std::cout << "[System] Interaktionen avbröts.\n";
+    std::cout << "[System] Interaction cancelled.\n";
 }

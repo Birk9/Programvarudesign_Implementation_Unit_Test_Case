@@ -15,7 +15,7 @@ add_library(GameEngineLib
 )
 
 
-add_executable(PlayGame main.cpp)
+add_executable(PlayGame main.cpp ConsoleUI.cpp)
 target_link_libraries(PlayGame PRIVATE GameEngineLib)
 
 
