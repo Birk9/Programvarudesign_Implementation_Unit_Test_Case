@@ -1,5 +1,6 @@
 #include "ConsoleUI.h"
 #include "GameObject.h"
+#include "Character.h"
 #include <iostream>
 
 ConsoleUI::ConsoleUI(Game* gameInstance) : game(gameInstance) {}
@@ -41,20 +42,32 @@ void ConsoleUI::interactWithEntity() {
     std::cout << "What do you want to interact with? (e.g., Lamp, Guard): ";
     std::cin >> name;
 
-    // Kommunicerar med Game-klassen
+    // Kollar först om det är ett objekt
     if (game->selectGameObject(name)) {
-        std::cout << "What do you want to do with " << name << "? (e.g., TurnOn, Talk): ";
+        std::cout << "What do you want to do with " << name << "? (e.g., TurnOn): ";
         std::cin >> interaction;
         
-        // Vi skapar ett tillfälligt tomt objekt
         GameObject tempObj; 
-        
         if (game->selectInteraction(&tempObj, interaction)) {
             game->startInteraction();
         } else {
-            std::cout << "Could not perform the action. Invalid interaction.\n";
+            std::cout << "Could not perform the action. Invalid interaction for an object.\n";
         }
-    } else {
+    } 
+    // Om det inte var ett objekt, kollar vi om det är en karaktär
+    else if (game->selectCharacter(name)) {
+        std::cout << "What do you want to do with " << name << "? (e.g., Talk): ";
+        std::cin >> interaction;
+        
+        Character tempChar;
+        if (game->selectInteraction(&tempChar, interaction)) {
+            game->startInteraction();
+        } else {
+            std::cout << "Could not perform the action. Invalid interaction for a character.\n";
+        }
+    } 
+    //Om det varken är ett objekt eller en karaktär
+    else {
         std::cout << "There is no '" << name << "' here.\n";
     }
 }
