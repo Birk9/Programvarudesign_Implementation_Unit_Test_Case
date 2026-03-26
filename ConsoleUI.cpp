@@ -5,9 +5,9 @@
 ConsoleUI::ConsoleUI(Game* gameInstance) : game(gameInstance) {}
 
 void ConsoleUI::run() {
+    // Startscen
     std::string choice = "";
-    std::cout << "\n=== WELCOME TO THE GAME ===\n";
-    // Fulfills the MVP requirement for a Start Scene
+    std::cout << "\n--- WELCOME TO THE GAME ---\n";
     std::cout << "[System] You are in the Start Scene.\n";
 
     while (choice != "3") { 
@@ -21,7 +21,6 @@ void ConsoleUI::run() {
             std::cout << "Your inventory is currently empty.\n";
             std::cout << "-----------------\n";
         } else if (choice != "3") {
-            // Liten bonus: Säger till om spelaren skriver något konstigt!
             std::cout << "Invalid choice, try again!\n";
         }
     }
@@ -42,13 +41,12 @@ void ConsoleUI::interactWithEntity() {
     std::cout << "What do you want to interact with? (e.g., Lamp, Guard): ";
     std::cin >> name;
 
-    // Communicates with the Game class (our domain logic)
+    // Kommunicerar med Game-klassen
     if (game->selectGameObject(name)) {
         std::cout << "What do you want to do with " << name << "? (e.g., TurnOn, Talk): ";
         std::cin >> interaction;
         
-        // We create a temporary empty object to match the teacher's UML diagram 
-        // (selectInteraction requires a GameObject pointer)
+        // Vi skapar ett tillfälligt tomt objekt
         GameObject tempObj; 
         
         if (game->selectInteraction(&tempObj, interaction)) {

@@ -2,13 +2,13 @@
 #include "ConsoleUI.h"
 
 int main() {
-    // 1. Create the game engine (which now automatically populates its repository)
+    // Skapar 'Game engine'
     Game myGame;
     
-    // 2. Create the menu and grant it access to the game instance
+    // Skapar menyn
     ConsoleUI ui(&myGame);
     
-    // 3. Start the game loop!
+    // Startar spel loopen
     ui.run();
 
     return 0;
