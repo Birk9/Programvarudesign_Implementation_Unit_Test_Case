@@ -2,55 +2,64 @@
 #include "doctest.h"
 #include "Game.h"
 #include "GameObject.h"
-#include "Scene.h"
-
-// ---------------------------------------------------------
-// TESTER FÖR: Interact With Object
-// ---------------------------------------------------------
+#include "Character.h"
 
 TEST_CASE("SelectGameObject - Positive - ObjectExists") {
-    // Arrange
     Game game;
-    // (I en riktig implementation skulle Game hämta "TestLamp" 
-    // från GameObjectRepository här)
-    
-    // Act
-    // Anta att vi har ändrat selectGameObject till att returnera bool!
+    // Testar att spelet hittar lampan vi lade in i arkivet
     bool success = game.selectGameObject("TestLamp"); 
-    
-    // Assert
     CHECK(success == true); 
 }
 
 TEST_CASE("SelectGameObject - Negative - ObjectMissing") {
     Game game;
-    
-    // Act: Försöker välja ett objekt som inte finns
+    // Testar att spelet blockerar objekt som inte finns
     bool success = game.selectGameObject("NonExistentSword"); 
-    
-    // Assert
     CHECK(success == false);
 }
 
-TEST_CASE("SelectInteraction - Positive - ValidInteraction") {
+TEST_CASE("SelectInteraction (Object) - Positive - ValidInteraction") {
     Game game;
     GameObject lamp;
-    // lamp.addInteraction("TurnOn"); // Pseudokod för hur ni lägger till den
-    
-    // Act
+    // Testar att "TurnOn" är godkänt för ett objekt
     bool success = game.selectInteraction(&lamp, "TurnOn");
-    
-    // Assert
     CHECK(success == true);
 }
 
-TEST_CASE("SelectInteraction - Negative - InvalidInteraction") {
+TEST_CASE("SelectInteraction (Object) - Negative - InvalidInteraction") {
     Game game;
     GameObject lamp;
-    
-    // Act: Försöker göra något man inte kan göra med en lampa
+    // Testar att man inte kan "äta" en lampa
     bool success = game.selectInteraction(&lamp, "Eat");
-    
-    // Assert
+    CHECK(success == false);
+}
+
+TEST_CASE("SelectCharacter - Positive - CharacterExists") {
+    Game game;
+    // Testar logiken hittar vi vakten i CharacterRepository?
+    bool success = game.selectCharacter("Guard");
+    CHECK(success == true);
+}
+
+TEST_CASE("SelectCharacter - Negative - CharacterMissing") {
+    Game game;
+    // Testar att spelet nekar en karaktär som inte finns
+    bool success = game.selectCharacter("Ghost");
+    CHECK(success == false);
+}
+
+TEST_CASE("SelectInteraction (Character) - Positive - ValidInteraction") {
+    Game game;
+    Character guard;
+    // Testar logiken "Talk" ska finnas i listInteractionTypes()
+    bool success = game.selectInteraction(&guard, "Talk");
+    CHECK(success == true);
+}
+
+TEST_CASE("SelectInteraction (Character) - Negative - InvalidInteraction") {
+    Game game;
+    Character guard;
+    // Testar att man inte kan använda objekt-interaktioner ("TurnOn") på en karaktär
+    bool success = game.selectInteraction(&guard, "TurnOn");
     CHECK(success == false);
 }
