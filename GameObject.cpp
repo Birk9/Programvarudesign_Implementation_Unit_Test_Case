@@ -6,7 +6,7 @@ std::vector<std::string> GameObject::listInteractionTypes() {
 }
 
 void GameObject::startInteraction(std::string theInteractionType) {
-    std::cout << "GameObject: Förbereder interaktionen '" << theInteractionType << "'...\n";
+    std::cout << "GameObject: Preparing the interaction '" << theInteractionType << "'...\n";
 }
 
 std::vector<std::string> GameObject::listCurrentInteractionOptions() {
@@ -14,13 +14,13 @@ std::vector<std::string> GameObject::listCurrentInteractionOptions() {
 }
 
 void GameObject::setCurrentInteractionOptions(std::string theOptions) {
-    std::cout << "GameObject: Sätter alternativ till '" << theOptions << "'.\n";
+    std::cout << "GameObject: Adds options to '" << theOptions << "'.\n";
 }
 
 void GameObject::startCurrentInteraction() {
-    std::cout << "GameObject: Startar den valda interaktionen!\n";
+    std::cout << "GameObject: Starts the selected interaction. \n";
 }
 
 void GameObject::abortCurrentInteraction() {
-    std::cout << "GameObject: Avbryter interaktionen.\n";
+    std::cout << "GameObject: Cancels the interaction. \n";
 }

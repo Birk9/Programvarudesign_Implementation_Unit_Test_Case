@@ -6,21 +6,21 @@ EventManager::EventManager() {}
 EventManager::~EventManager() {}
 
 void EventManager::createEvent(EventCondition condition, Event event) {
-    std::cout << "EventManager: Skapar event.\n";
+    std::cout << "EventManager: Create event.\n";
 }
 
 void EventManager::listAffectedEvents(EventCondition condition) {
-    std::cout << "EventManager: Listar påverkade events.\n";
+    std::cout << "EventManager: Lists affected events.\n";
 }
 
 void EventManager::triggerEvents(EventCondition condition) {
-    std::cout << "EventManager: Triggar events för condition.\n";
+    std::cout << "EventManager: Triggers events for conditions.\n";
 }
 
 void EventManager::clearEvent(EventCondition condition) {
-    std::cout << "EventManager: Rensar event baserat på condition.\n";
+    std::cout << "EventManager: Clears events based on condition.\n";
 }
 
 void EventManager::clearEvent(Event event) {
-    std::cout << "EventManager: Rensar specifikt event.\n";
+    std::cout << "EventManager: Clears specific event.\n";
 }
