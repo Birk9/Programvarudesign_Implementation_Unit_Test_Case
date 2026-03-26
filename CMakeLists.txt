@@ -13,7 +13,7 @@ add_library(GameEngineLib
     GameObjectRepository.cpp
     Scene.cpp
     Character.cpp
-    CharacterRepository.cpp
+    Phonebook.cpp
 )
 
 

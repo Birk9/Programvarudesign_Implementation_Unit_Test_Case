@@ -6,7 +6,7 @@ Game::Game() {
     // Alla objekt skapas
     myGameObjects.addGameObject("TestLamp", new GameObject());
     myGameObjects.addGameObject("Lamp", new GameObject()); 
-    myCharacters.addCharacter("Guard", new Character()); 
+    myPhonebook.addCharacter("Guard", new Character()); 
 }
 
 Game::~Game() {}
@@ -19,10 +19,10 @@ bool Game::selectGameObject(std::string name) {
 
 bool Game::selectCharacter(std::string name) {
 
-    //Kollar om saken/karaktären finns
+    //Kollar om saken/karaktï¿½ren finns
     if (currentScene.isAvailable(name)) {
  
-        Character* character = myCharacters.getCharacter(name);
+        Character* character = myPhonebook.getCharacter(name);
         if (character != nullptr) {
             return true;
         }

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "GameObjectRepository.h"
-#include "CharacterRepository.h"
+#include "PhoneBook.h"
 #include "Scene.h"
 #include "GameObject.h"
 #include "Character.h"           
@@ -25,7 +25,7 @@ public:
 
 private:
 	GameObjectRepository myGameObjects;
-    CharacterRepository myCharacters;
+    Phonebook myPhonebook;
 	Scene currentScene;
 	Scene playerInventory;
 };

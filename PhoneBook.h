@@ -3,10 +3,10 @@
 #include <map>
 #include "Character.h"
 
-class CharacterRepository {
+class Phonebook {
 public:
-    CharacterRepository();
-    ~CharacterRepository();
+    Phonebook();
+    ~Phonebook();
     void addCharacter(std::string name, Character* character);
     Character* getCharacter(std::string name);
 
